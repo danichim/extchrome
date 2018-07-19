@@ -1,0 +1,427 @@
+.hidden {display:none;}
+
+@import url(https://fonts.googleapis.com/css?family=Abel);
+html {
+  box-sizing: border-box;
+}
+
+*, *::after, *::before {
+  box-sizing: inherit;
+}
+
+@-webkit-keyframes rotateBg {
+  0% {
+    background-size: 100%;
+  }
+  50% {
+    background-size: 200%;
+  }
+  100% {
+    background-size: 100%;
+  }
+}
+@-moz-keyframes rotateBg {
+  0% {
+    background-size: 100%;
+  }
+  50% {
+    background-size: 200%;
+  }
+  100% {
+    background-size: 100%;
+  }
+}
+@keyframes rotateBg {
+  0% {
+    background-size: 100%;
+  }
+  50% {
+    background-size: 200%;
+  }
+  100% {
+    background-size: 100%;
+  }
+}
+body.options-page {
+  background-color: #2BFFEF;
+  background-image: -webkit-linear-gradient(-225deg, #2BFFEF, #9EFF99);
+  background-image: linear-gradient(-45deg,#2BFFEF, #9EFF99);
+  -webkit-animation: rotateBg 3s linear infinite;
+  -moz-animation: rotateBg 3s linear infinite;
+  animation: rotateBg 3s linear infinite;
+  font-family: "Abel", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+label {
+  pointer-events: none;
+}
+
+@-webkit-keyframes triangle1 {
+  0%,100% {
+    fill: #2e2e2e;
+  }
+  50% {
+    fill: #333333;
+  }
+}
+@-moz-keyframes triangle1 {
+  0%,100% {
+    fill: #2e2e2e;
+  }
+  50% {
+    fill: #333333;
+  }
+}
+@keyframes triangle1 {
+  0%,100% {
+    fill: #2e2e2e;
+  }
+  50% {
+    fill: #333333;
+  }
+}
+@-webkit-keyframes triangle2 {
+  0%,100% {
+    fill: #292929;
+  }
+  50% {
+    fill: #2e2e2e;
+  }
+}
+@-moz-keyframes triangle2 {
+  0%,100% {
+    fill: #292929;
+  }
+  50% {
+    fill: #2e2e2e;
+  }
+}
+@keyframes triangle2 {
+  0%,100% {
+    fill: #292929;
+  }
+  50% {
+    fill: #2e2e2e;
+  }
+}
+@-webkit-keyframes triangle3 {
+  0%,100% {
+    fill: #242424;
+  }
+  50% {
+    fill: #292929;
+  }
+}
+@-moz-keyframes triangle3 {
+  0%,100% {
+    fill: #242424;
+  }
+  50% {
+    fill: #292929;
+  }
+}
+@keyframes triangle3 {
+  0%,100% {
+    fill: #242424;
+  }
+  50% {
+    fill: #292929;
+  }
+}
+@-webkit-keyframes triangle4 {
+  0%,100% {
+    fill: #333333;
+  }
+  50% {
+    fill: #383838;
+  }
+}
+@-moz-keyframes triangle4 {
+  0%,100% {
+    fill: #333333;
+  }
+  50% {
+    fill: #383838;
+  }
+}
+@keyframes triangle4 {
+  0%,100% {
+    fill: #333333;
+  }
+  50% {
+    fill: #383838;
+  }
+}
+@-webkit-keyframes triangle5 {
+  0%,100% {
+    fill: #1f1f1f;
+  }
+  50% {
+    fill: #242424;
+  }
+}
+@-moz-keyframes triangle5 {
+  0%,100% {
+    fill: #1f1f1f;
+  }
+  50% {
+    fill: #242424;
+  }
+}
+@keyframes triangle5 {
+  0%,100% {
+    fill: #1f1f1f;
+  }
+  50% {
+    fill: #242424;
+  }
+}
+section.modal {
+  background-color: #333;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  position: fixed;
+  top: 50%;
+  right: auto;
+  bottom: auto;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -o-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  width: 900px;
+  height: 440px;
+  padding: 20px 40px;
+  color: #fff;
+  overflow: hidden;
+}
+section.modal h2 {
+  font-size: 34px;
+  font-weight: 300;
+  margin: 15px 0 25px;
+  position: relative;
+  top: 0px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+section.modal > div {
+  position: relative;
+  z-index: 2;
+}
+section.modal svg {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  z-index: 1;
+}
+section.modal svg path {
+  -webkit-animation: triangle1 4s linear infinite;
+  -moz-animation: triangle1 4s linear infinite;
+  animation: triangle1 4s linear infinite;
+}
+section.modal svg path:nth-child(2n) {
+  -webkit-animation: triangle2 3s linear infinite;
+  -moz-animation: triangle2 3s linear infinite;
+  animation: triangle2 3s linear infinite;
+}
+section.modal svg path:nth-child(3n) {
+  -webkit-animation: triangle3 5s linear infinite;
+  -moz-animation: triangle3 5s linear infinite;
+  animation: triangle3 5s linear infinite;
+}
+section.modal svg path:nth-child(4n) {
+  -webkit-animation: triangle4 4s linear infinite;
+  -moz-animation: triangle4 4s linear infinite;
+  animation: triangle4 4s linear infinite;
+}
+section.modal svg path:nth-child(5n) {
+  -webkit-animation: triangle5 3s linear infinite;
+  -moz-animation: triangle5 3s linear infinite;
+  animation: triangle5 3s linear infinite;
+}
+section.modal button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  position: relative;
+  top: 0px;
+  cursor: pointer;
+  display: inline-block;
+  clear: both;
+  float: left;
+  color: #fa4084;
+  background-color: transparent;
+  border: 2px solid;
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: "Abel", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
+  letter-spacing: 0.075em;
+  margin: 25px 0 0 0;
+  padding: 0.5em 1.5em;
+  outline: none;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  -webkit-transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, border-color 0.3s ease-in-out, top 0.3s 0.4s ease-in-out;
+  -moz-transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, border-color 0.3s ease-in-out, top 0.3s 0.4s ease-in-out;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, border-color 0.3s ease-in-out, top 0.3s 0.4s ease-in-out;
+}
+section.modal button:hover {
+  color: #fff;
+  background-color: #fa4084;
+  border-color: #fa4084;
+}
+section.modal fieldset {
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+  position: relative;
+  height: 46px;
+}
+section.modal fieldset label, section.modal fieldset input {
+  font-size: 22px;
+  width: 100%;
+}
+section.modal fieldset input {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  outline: none;
+  background-color: transparent;
+  border: none;
+  padding: 8px;
+  border-bottom: 3px solid #fff;
+  font-family: "Abel", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+}
+section.modal fieldset label {
+    display: none;
+  position: absolute;
+  top: 0.33em;
+  right: auto;
+  bottom: auto;
+  left: 0px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+section.modal fieldset input:focus,
+section.modal fieldset input.dirty {
+  background-color: rgba(255, 255, 255, 0.33);
+  border-bottom-color: rgba(255, 255, 255, 0.33);
+}
+section.modal fieldset input:focus + label,
+section.modal fieldset input.dirty + label {
+  font-size: 16px;
+  top: -1.25em;
+}
+section.modal fieldset input.dirty.invalid {
+  border-bottom-color: #FF495C;
+}
+section.modal fieldset input.dirty.valid {
+  border-bottom-color: #00D573;
+}
+section.modal form {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+section.modal form::after {
+  clear: both;
+  content: "";
+  display: block;
+}
+section.modal form fieldset {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 22%;
+}
+section.modal form fieldset:last-child {
+  margin-right: 0;
+}
+section.modal form input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  position: relative;
+}
+section.modal form fieldset:nth-child(1) input {
+  -webkit-transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, top 0.3s 0.1s ease-in-out;
+  -moz-transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, top 0.3s 0.1s ease-in-out;
+  transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, top 0.3s 0.1s ease-in-out;
+}
+section.modal form fieldset:nth-child(2) input {
+  -webkit-transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, top 0.3s 0.2s ease-in-out;
+  -moz-transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, top 0.3s 0.2s ease-in-out;
+  transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, top 0.3s 0.2s ease-in-out;
+}
+section.modal form fieldset:nth-child(4) input {
+    -webkit-transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, top 0.3s 0.3s ease-in-out;
+    -moz-transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, top 0.3s 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, top 0.3s 0.3s ease-in-out;
+  }
+section.modal form fieldset:nth-child(3) input {
+  -webkit-transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, top 0.3s 0.3s ease-in-out;
+  -moz-transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, top 0.3s 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, top 0.3s 0.3s ease-in-out;
+}
+section.modal div.thank-you {
+  position: absolute;
+  top: 400px;
+  right: auto;
+  bottom: auto;
+  left: 0px;
+  width: 100%;
+  -webkit-transition: all 0.3s 0.6s ease-in-out;
+  -moz-transition: all 0.3s 0.6s ease-in-out;
+  transition: all 0.3s 0.6s ease-in-out;
+  z-index: 2;
+  text-align: center;
+}
+section.modal div.thank-you h3 {
+  font-size: 44px;
+  margin: 0 0 0px 0;
+}
+section.modal div.thank-you p {
+  font-size: 22px;
+  position: relative;
+  top: 80px;
+  -webkit-transition: all 0.3s 0.7s ease-in-out;
+  -moz-transition: all 0.3s 0.7s ease-in-out;
+  transition: all 0.3s 0.7s ease-in-out;
+}
+
+section.modal.thanks h2 {
+  top: -200px;
+}
+section.modal.thanks fieldset input {
+  top: -200px;
+}
+section.modal.thanks fieldset input + label {
+  top: -220px;
+}
+section.modal.thanks button {
+  top: -240px;
+}
+section.modal.thanks div.thank-you {
+  top: 40px;
+}
+section.modal.thanks div.thank-you p {
+  top: 0px;
+}

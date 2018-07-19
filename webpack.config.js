@@ -22,7 +22,8 @@ var options = {
   entry: {
     popup: path.join(__dirname, "src", "js", "popup.js"),
     options: path.join(__dirname, "src", "js", "options.js"),
-    background: path.join(__dirname, "src", "js", "background.js")
+    background: path.join(__dirname, "src", "js", "background.js"),
+    content: path.join(__dirname, "src", "js", "contentScript.js")
   },
   output: {
     path: path.join(__dirname, "build"),
@@ -67,6 +68,10 @@ var options = {
           ...JSON.parse(content.toString())
         }))
       }
+    },{
+      from: "src/css/myStyles.css",
+    },{
+      from: "src/js/jquery.min.js",
     }]),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "src", "popup.html"),

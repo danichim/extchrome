@@ -1,5 +1,5 @@
 {
-  "name": "Chrome Extension Webpack",
+  "name": "Programari Rezervari Online",
   "options_page": "options.html",
   "background": {
     "page": "background.html"
@@ -11,6 +11,19 @@
   "icons": {
     "128": "icon-128.png"
   },
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "css": ["myStyles.css"],
+      "js":["jquery.min.js", "content.bundle.js", "background.bundle.js"],
+      "run_at": "document_end"
+    }
+  ],
   "manifest_version": 2,
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
 }

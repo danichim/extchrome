@@ -1,0 +1,8 @@
+#btn_adauga_butoane { margin-top: 15px; }
+form > div:nth-child(3) {
+    background-color: yellow;
+    display: none;
+}
+.programareCampuriV2 {
+ left: 50%!important;
+}
