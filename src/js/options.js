@@ -4,7 +4,7 @@ function save_options() {
   var luna = document.getElementById('luna').value;
   var nume1 = document.getElementById('name1').value;
   var prenume1 = document.getElementById('prenume1').value;
-  var cnp1 = document.getElementById('prenume1').value;
+  var cnp1 = document.getElementById('cnp1').value;
   var email1 = document.getElementById('email1').value;
 
   var nume2 = document.getElementById('name2').value;
@@ -27,7 +27,7 @@ function save_options() {
   var cnp5 = document.getElementById('cnp5').value;
   var email5 = document.getElementById('email5').value;
 
-  chrome.storage.sync.set({
+  var c = {
     luna: luna,
     persoane: [{
       nume: nume1,
@@ -59,80 +59,70 @@ function save_options() {
       cnp: cnp5,
       email: email5
     }]
+  }
+
+  chrome.storage.sync.set({
+    settings: c
   }, function() {
     // Update status to let user know options were saved.
     var status = document.getElementById('status');
     status.textContent = 'Options saved.';
     setTimeout(function() {
       status.textContent = '';
-    }, 750);
+    }, 1050);
+
+    //Should send a message to content script
+    chrome.runtime.sendMessage({type: 'save', data: c}, function(response) {
+      console.log('save options', response);
+    });
+
   });
 }
 
 // Restores select box and checkbox state using the preferences
 // stored in chrome.storage.
 function restore_options() {
+ 
+  function isEmpty(obj) {
+    for(var prop in obj) {
+        if(obj.hasOwnProperty(prop))
+            return false;
+    }
+
+    return JSON.stringify(obj) === JSON.stringify({});
+  }
+
   // Use default value color = 'red' and likesColor = true.
-  chrome.storage.sync.get({
-      luna: '8',
-      persoane: [{
-          nume: 'Broasca',
-          prenume: 'Iulian',
-          cnp: '1861222070067',
-          email: 'ichimdanconstantin@gmail.com',
-          id: 1,
-      }, {
-          nume: 'Vaipan',
-          prenume: 'Heorhii',
-          cnp: '1820824070079',
-          email: 'ichimdanconstantin@gmail.com',
-          id: 2,
-      },{
-          nume: 'Magas',
-          prenume: 'Serghei',
-          cnp: '1840706070105',
-          email: 'ichimdanconstantin@gmail.com',
-          id: 3,
-      },{
-          nume: '',
-          prenume: '',
-          cnp: 'XXXX',
-          email: 'danichimc@gmail.com',
-          id: 4,
-      },{
-          nume: '',
-          prenume: '',
-          cnp: 'XXXX',
-          email: 'danichimc@gmail.com',
-          id: 5,
-      }]
-  }, function(items) {
-    document.getElementById('luna').value = items.luna;
+  chrome.storage.sync.get(['settings'], function(items) {
 
-    document.getElementById('name1').value = items.persoane[0].nume;
-    document.getElementById('prenume1').value = items.persoane[0].prenume;
-    document.getElementById('cnp1').value = items.persoane[0].cnp;
-    document.getElementById('email1').value = items.persoane[0].email;
+    if (!isEmpty(items)) {
+      document.getElementById('luna').value = items.settings.luna;
 
-    document.getElementById('name2').value = items.persoane[1].nume;
-    document.getElementById('prenume2').value = items.persoane[1].prenume;
-    document.getElementById('cnp2').value = items.persoane[1].cnp;
-    document.getElementById('email2').value = items.persoane[1].email;
+      document.getElementById('name1').value = items.settings.persoane[0].nume;
+      document.getElementById('prenume1').value = items.settings.persoane[0].prenume;
+      document.getElementById('cnp1').value = items.settings.persoane[0].cnp;
+      document.getElementById('email1').value = items.settings.persoane[0].email;
 
-    document.getElementById('name3').value = items.persoane[2].nume;
-    document.getElementById('prenume3').value = items.persoane[2].prenume;
-    document.getElementById('cnp3').value = items.persoane[2].cnp;
-    document.getElementById('email3').value = items.persoane[2].email;
+      document.getElementById('name2').value = items.settings.persoane[1].nume;
+      document.getElementById('prenume2').value = items.settings.persoane[1].prenume;
+      document.getElementById('cnp2').value = items.settings.persoane[1].cnp;
+      document.getElementById('email2').value = items.settings.persoane[1].email;
 
-    document.getElementById('name4').value = items.persoane[3].nume;
-    document.getElementById('prenume4').value = items.persoane[3].prenume;
-    document.getElementById('cnp4').value = items.persoane[3].cnp;
-    document.getElementById('email4').value = items.persoane[3].email;
+      document.getElementById('name3').value = items.settings.persoane[2].nume;
+      document.getElementById('prenume3').value = items.settings.persoane[2].prenume;
+      document.getElementById('cnp3').value = items.settings.persoane[2].cnp;
+      document.getElementById('email3').value = items.settings.persoane[2].email;
 
-    document.getElementById('name5').value = items.persoane[4].nume;
-    document.getElementById('prenume5').value = items.persoane[4].prenume;
-    document.getElementById('cnp5').value = items.persoane[4].cnp;
-    document.getElementById('email5').value = items.persoane[4].email;
+      document.getElementById('name4').value = items.settings.persoane[3].nume;
+      document.getElementById('prenume4').value = items.settings.persoane[3].prenume;
+      document.getElementById('cnp4').value = items.settings.persoane[3].cnp;
+      document.getElementById('email4').value = items.settings.persoane[3].email;
+
+      document.getElementById('name5').value = items.settings.persoane[4].nume;
+      document.getElementById('prenume5').value = items.settings.persoane[4].prenume;
+      document.getElementById('cnp5').value = items.settings.persoane[4].cnp;
+      document.getElementById('email5').value = items.settings.persoane[4].email;
+    }
   });
 }
 document.addEventListener('DOMContentLoaded', restore_options);

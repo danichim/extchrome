@@ -9,10 +9,20 @@
     //dau click pe ziua aia dupa care iau toate a din div#generareZi si fac un for caut fiecare daca hasClass('available')
     //cu jchery bag 5 butoane pentru 5 persoane care le setez tot in obiectul global
 
-     window._ = {
-        luna: '8',
+
+    function isEmpty(obj) {
+        for(var prop in obj) {
+            if(obj.hasOwnProperty(prop))
+                return false;
+        }
+
+        return JSON.stringify(obj) === JSON.stringify({});
+    }
+
+    window._ = {
+        luna: '12',
         persoane: [{
-            nume: 'Broasca',
+            nume: 'FIRST',
             prenume: 'Iulian',
             cnp: '1861222070067',
             email: 'ichimdanconstantin@gmail.com',
@@ -45,6 +55,17 @@
         selectLuna : window.jQuery("select[name='SelectLuna']"), //change value
         ziDeschisa: window.jQuery('#generareLuna').find('a'), //refresh
     }
+    
+    // Use default value color = 'red' and likesColor = true.
+    chrome.storage.sync.get(['settings'], function(items) {
+        console.log('settings', items);
+        if (!isEmpty(items)) {
+            window._ = Object.assign(window._, items.settings);
+        } else {
+            console.log('iii', items.settings);
+            alert('mergi in pagina de setari! ')
+        }
+    });
 
     window.afiseazaButoanele = function() {
         console.log('afiseaza butoane');
@@ -164,18 +185,15 @@
 
     setTimeout(function(){ window.initAndCheck() }, 300);
 
-    chrome.runtime.onMessage.addListener(
-        function(request, sender, sendResponse) {
-          console.log(sender.tab ?
-                      "from a content script:" + sender.tab.url :
-                      "from the extension");
-          if (request.greeting == "saved") {
-
-            chrome.storage.sync.get(['key'], function(result) {
-                console.log('content take date: ' + JSON.stringify(result.key));
-            });
-            sendResponse({farewell: "goodbye"});
-          }
-        });
-        
 })();
+
+chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse) {
+        console.log('content script', request);
+        console.log('www', window._);
+
+        sendResponse("updated");
+        window.location.reload();
+    }
+);
+    
