@@ -18,7 +18,7 @@
   ],
   "content_scripts": [
     {
-      "matches": ["*://*/*"],
+      "matches": ["*://ghiseulonline.ro/*"],
       "css": ["myStyles.css"],
       "js":["jquery.min.js", "content.bundle.js", "background.bundle.js"],
       "run_at": "document_end"

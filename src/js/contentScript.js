@@ -82,9 +82,9 @@
             var currentPerson = window._.persoane[indexPerson];
             window.populateDataForm(currentPerson);
         });
-        // window.jQuery('#btnInscrie').on('click', function(e){
-        //   window.open('http://ghiseulonline.ro/portal/suceava/evp/psonline.nsf/Programare?OpenForm&TipProgramare=Carte%20identitate', '_blank');
-        // });
+        window.jQuery('#btnInscrie').on('click', function(e){
+          window.open('http://ghiseulonline.ro/portal/suceava/evp/psonline.nsf/Programare?OpenForm&TipProgramare=Carte%20identitate', '_blank');
+        });
     };
 
     window.populateDataForm = function(person) {
