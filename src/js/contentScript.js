@@ -169,15 +169,13 @@
           console.log(sender.tab ?
                       "from a content script:" + sender.tab.url :
                       "from the extension");
-          if (request.greeting == "hello")
+          if (request.greeting == "saved") {
+
+            chrome.storage.sync.get(['key'], function(result) {
+                console.log('content take date: ' + JSON.stringify(result.key));
+            });
             sendResponse({farewell: "goodbye"});
+          }
         });
-
-
-    chrome.storage.sync.get(['key'], function(result) {
-        console.log('content take date: ' + JSON.stringify(result.key));
-    });
-
-        
         
 })();
